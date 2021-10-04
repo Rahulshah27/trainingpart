@@ -14,4 +14,27 @@
     <string name="enter_here">Enter Here</string>
     <string name="practice_navigation">Practice Navigation</string>
     <string name="bottom_navigation">Bottom Navigation</string>
+
+    <string name="file_name">File Name</string>
+    <string name="enter_your_name">Enter Your Name</string>
+    <string name="custom_name">Name</string>
+    <string name="add_items">Add items</string>
+    <string name="android_version_name">Android version name</string>
+    <string name="description">Description</string>
+    <string name="released_on">Released On</string>
+    <string name="login">Login</string>
+    <string name="user_name">User Name</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="password">Enter Password</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="don_t_have_an_account">don\'t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="register">Register</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="login_here">Login Here</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="enter_something">Enter Something</string>
+    <string name="sent_to_fragment_two">Sent to fragment Two</string>
+    <string name="send_to_fragment_one">Send to Fragment One</string>
 </resources>

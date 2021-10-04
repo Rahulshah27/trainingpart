@@ -11,7 +11,10 @@ object Constants {
         const val search = "search"
         const val orders = "orders"
         const val profile = "profile"
+    }
 
+    object SharedPref {
+        const val myData = "myData"
     }
 
 }
