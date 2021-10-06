@@ -58,12 +58,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 }
             }
         }
-
         tvLogin.setOnClickListener {
             val navController: NavController = Navigation.findNavController(view)
             navController.navigate(R.id.action_loginFragment_to_signUpFragment)
             navController.backStack
         }
     }
-
 }

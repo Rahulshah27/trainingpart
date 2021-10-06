@@ -12,7 +12,6 @@ import com.example.trainingpart.Constants
 import com.example.trainingpart.R
 
 
-
 class FragmentSecond : Fragment(R.layout.fragment_second) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,11 +32,8 @@ class FragmentSecond : Fragment(R.layout.fragment_second) {
 
             val navController: NavController = Navigation.findNavController(view)
             navController.navigate(R.id.action_secondFragment_to_thirdFragment, bundle)
-
         }
-
         textView.text = text1
     }
-
 
 }
