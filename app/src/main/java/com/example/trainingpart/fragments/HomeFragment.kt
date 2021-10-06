@@ -8,7 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.example.trainingpart.Constants
+import com.example.trainingpart.utils.Constants
 import com.example.trainingpart.R
 
 

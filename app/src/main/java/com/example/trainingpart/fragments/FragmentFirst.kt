@@ -6,7 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.example.trainingpart.Constants
+import com.example.trainingpart.utils.Constants
 import com.example.trainingpart.R
 
 class FragmentFirst : Fragment(R.layout.fragment_first) {

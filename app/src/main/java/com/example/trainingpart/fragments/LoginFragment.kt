@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.trainingpart.AuthNavigationActivity
-import com.example.trainingpart.Constants
+import com.example.trainingpart.utils.Constants
 import com.example.trainingpart.PracticeNavigationActivity
 import com.example.trainingpart.R
 import kotlinx.android.synthetic.main.fragment_login.view.*

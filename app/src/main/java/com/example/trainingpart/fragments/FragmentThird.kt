@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.example.trainingpart.Constants
+import com.example.trainingpart.utils.Constants
 import com.example.trainingpart.R
 
 class FragmentThird : Fragment(R.layout.fragment_third) {

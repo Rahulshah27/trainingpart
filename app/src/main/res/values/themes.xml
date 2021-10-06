@@ -17,5 +17,7 @@
     <style name="ButtonStyle" parent="Widget.AppCompat.Button">
         <item name="android:backgroundTint" tools:targetApi="lollipop">@android:color/holo_red_dark</item>
     </style>
+    <style name="Theme.TrainingPart.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
+    <style name="Theme.TrainingPart.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
