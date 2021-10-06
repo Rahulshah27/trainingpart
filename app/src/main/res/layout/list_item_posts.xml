@@ -15,7 +15,7 @@
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:textColor="@color/black"
-            android:padding="@dimen/m_20"
+            android:padding="@dimen/m_8"
             android:textSize="@dimen/t_16"
             android:textStyle="bold"
             android:layout_height="wrap_content"
@@ -25,8 +25,8 @@
             android:id="@+id/tvBody"
             android:layout_width="match_parent"
             android:textColor="@color/black"
-            android:padding="@dimen/m_16"
-            android:textSize="@dimen/m_16"
+            android:padding="@dimen/m_8"
+            android:textSize="@dimen/t_12"
             android:layout_height="wrap_content"
             />
     </LinearLayout>

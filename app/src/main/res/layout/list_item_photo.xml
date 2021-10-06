@@ -8,6 +8,6 @@
         android:id="@+id/imageview"
         android:layout_width="match_parent"
         android:scaleType="centerCrop"
-        android:layout_height="140dp" />
+        android:layout_height="@dimen/m_140" />
 
 </androidx.cardview.widget.CardView>

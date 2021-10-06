@@ -31,13 +31,13 @@ class PostDetailsActivity : AppCompatActivity() {
         postsViewModelFactor = PostsViewModel.PostViewModelFactory(savedInstanceState,
             MainRepository(retrofitService)
         )
+
         adapter = CommentsAdapter()
         subscribeToObservers()
         rvDetails.adapter = adapter
         rvDetails.apply {
             layoutManager = LinearLayoutManager(this@PostDetailsActivity, RecyclerView.VERTICAL,false)
             addItemDecoration(DividerItemDecoration(this@PostDetailsActivity, RecyclerView.VERTICAL))
-
         }
     }
 
@@ -50,10 +50,9 @@ class PostDetailsActivity : AppCompatActivity() {
             if (it != null) {
                 tvTitle.text = it.title
                 tvBody.text = it.body
-
             }
-
         })
+
         postsViewModel.errorMessage.observe(this, Observer {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })
