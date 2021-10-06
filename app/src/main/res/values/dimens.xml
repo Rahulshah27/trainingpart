@@ -8,5 +8,6 @@
     <dimen name="m_20">20dp</dimen>
     <dimen name="m_140">140dp</dimen>
     <dimen name="t_20">20sp</dimen>
+    <dimen name="t_10">10sp</dimen>
 
 </resources>

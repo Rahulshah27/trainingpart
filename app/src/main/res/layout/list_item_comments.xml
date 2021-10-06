@@ -9,15 +9,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:padding="@dimen/t_16"
+        android:padding="@dimen/m_8"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvName"
+            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans_semibold"
-            android:textSize="@dimen/t_16" />
+            android:textSize="@dimen/t_12" />
 
         <TextView
             android:id="@+id/tvEmail"
@@ -32,6 +33,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
             android:textColor="@color/black"
-            android:textSize="@dimen/t_12" />
+            android:textSize="@dimen/t_10" />
+
     </LinearLayout>
 </LinearLayout>
