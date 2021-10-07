@@ -5,37 +5,39 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import com.example.trainingpart.repository.Result
 import android.widget.Toast
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.trainingpart.adapters.PostsAdapter
 import com.example.trainingpart.models.Posts
-import com.example.trainingpart.repository.MainRepository
 import com.example.trainingpart.utils.Constants
-import com.example.trainingpart.utils.RetrofitClient
+import com.example.trainingpart.viewmodelfactory.ViewModelFactory
 import com.example.trainingpart.viewmodels.PostsViewModel
 import kotlinx.android.synthetic.main.activity_posts.*
 
 
 class PostsActivity : AppCompatActivity() {
-
-    private val retrofitService = RetrofitClient.getInstance()
     lateinit var adapter: PostsAdapter
-    private lateinit var postsViewModelFactor: PostsViewModel.PostViewModelFactory
-    private val postsViewModel by lazy {
-        ViewModelProvider(this, postsViewModelFactor).get(PostsViewModel::class.java)
-    }
+
+//    private val retrofitService = RetrofitClient.getInstance()
+//    private lateinit var postsViewModelFactor: PostsViewModel.PostViewModelFactory
+//    private val postsViewModel by lazy {
+//        ViewModelProvider(this, postsViewModelFactor).get(PostsViewModel::class.java)
+//    }
+
+    private val postsViewModel by viewModels<PostsViewModel> { ViewModelFactory() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_posts)
 
-        postsViewModelFactor = PostsViewModel.PostViewModelFactory(
-            savedInstanceState,
-            MainRepository(retrofitService)
-        )
+//        postsViewModelFactor = PostsViewModel.PostViewModelFactory(
+//            savedInstanceState,
+//            MainRepository(retrofitService)
+//        )
+        postsViewModel.getPosts()
         subscribeToObservers()
         adapter = PostsAdapter(::itemClicked)
 
@@ -53,16 +55,11 @@ class PostsActivity : AppCompatActivity() {
     }
 
     private fun subscribeToObservers() {
-        postsViewModel.getPosts()
-        postsViewModel.postList.observe(this, Observer {
-            if (it != null) {
-                adapter.posts = it.toMutableList()
-
+        postsViewModel.postsList.observe(this, {
+            when(it){
+                is Result.Success->{ adapter.posts = it.value.body()?.toMutableList() }
+                is Result.Failure->{Toast.makeText(this, it.message,Toast.LENGTH_SHORT).show()}
             }
-
-        })
-        postsViewModel.errorMessage.observe(this, Observer {
-            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })
     }
 

@@ -1,73 +1,61 @@
 package com.example.trainingpart.viewmodels
 
-import android.os.Bundle
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.example.trainingpart.models.Comments
 import com.example.trainingpart.models.Posts
-import com.example.trainingpart.repository.MainRepository
-
+import com.example.trainingpart.repository.IMainRepository
+import com.example.trainingpart.repository.Result
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PostsViewModel constructor(private val bundle: Bundle?,private val mainRepository: MainRepository) :ViewModel(){
-    val postList = MutableLiveData<List<Posts>>()
-    val postDetail = MutableLiveData<Posts>()
-    val errorMessage = MutableLiveData<String>()
-    val commentList = MutableLiveData<List<Comments>>()
+class PostsViewModel  constructor(private val iMainRepo: IMainRepository) :ViewModel(){
+    val postsList =  MutableLiveData<Result<Response<List<Posts>>>>()
+    val postDetail =  MutableLiveData<Result<Response<Posts>>>()
+    val commentList =  MutableLiveData<Result<Response<List<Comments>>>>()
 
     fun getPosts(){
-        val response = mainRepository.getAllPosts()
+        val response = iMainRepo.getPosts()
         response.enqueue(object : Callback<List<Posts>> {
             override fun onResponse(call: Call<List<Posts>>, response: Response<List<Posts>>) {
-                postList.postValue(response.body())
+                postsList.value = Result.Success(response)
             }
 
             override fun onFailure(call: Call<List<Posts>>, t: Throwable) {
-                errorMessage.postValue(t.message)
+                postsList.value = Result.Failure(t.message)
             }
 
         })
     }
     fun getPostDetails(postId:Int){
-        val postDetailResponse = mainRepository.getPostDetails(postId)
+        val postDetailResponse = iMainRepo.getPostDetail(postId)
         postDetailResponse.enqueue(object : Callback<Posts>{
             override fun onResponse(call: Call<Posts>, response: Response<Posts>) {
-                postDetail.postValue(response.body())
+                postDetail.value = Result.Success(response)
             }
 
             override fun onFailure(call: Call<Posts>, t: Throwable) {
-                errorMessage.postValue(t.message)
+                postDetail.value = Result.Failure(t.message)
             }
 
         })
     }
 
     fun getCommentList(postId:Int){
-        val getCommentsResponse = mainRepository.getComments(postId)
+        val getCommentsResponse = iMainRepo.getComments(postId)
         getCommentsResponse.enqueue(object : Callback<List<Comments>> {
             override fun onResponse(call: Call<List<Comments>>, response: Response<List<Comments>>) {
-                commentList.postValue(response.body())
+                commentList.value = Result.Success(response)
             }
 
             override fun onFailure(call: Call<List<Comments>>, t: Throwable) {
-                errorMessage.postValue(t.message)
+                commentList.value = Result.Failure(t.message)
             }
 
         })
     }
 
 
-    class PostViewModelFactory constructor(private val bundle: Bundle?, private val mainRepository: MainRepository): ViewModelProvider.Factory{
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return if (modelClass.isAssignableFrom(PostsViewModel::class.java)){
-                PostsViewModel(bundle, this.mainRepository) as T
-            }else{
-                throw IllegalArgumentException("ViewModel not found")
-            }
-        }
 
-    }
 }
